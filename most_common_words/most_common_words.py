@@ -1,4 +1,5 @@
 import os
+import re as regEx
 
 
 def get_common_words():
@@ -9,8 +10,8 @@ def get_common_words():
         words_with_quantity = {}
 
         for line in data:
-            words = line.replace('\n', '').replace(
-                ".", "").replace(",", "").lower().split(" ")
+            words = regEx.sub('\.|\,|\\n', "")
+            words = words.split(" ")
 
             for word in words:
                 words_with_quantity[word] = words_with_quantity.get(
@@ -23,6 +24,8 @@ def get_common_words():
 
     except:
         print("something went wrong")
+    finally:
+        data.close()
 
 
 get_common_words()
