@@ -10,7 +10,7 @@ def get_common_words():
         words_with_quantity = {}
 
         for line in data:
-            words = regEx.sub('\.|\,|\\n', "")
+            words = regEx.sub('\.|\,|\\n', "", line)
             words = words.split(" ")
 
             for word in words:
@@ -19,11 +19,21 @@ def get_common_words():
 
         sorted_words = sorted(list(words_with_quantity))
 
-        for k in sorted_words:
-            print(f"A palavra {k} apareceu {words_with_quantity[k]} vezes.")
+        arr = []
 
+        for k in sorted_words:
+            arr.append({
+                'word': k,
+                'quantity': words_with_quantity[k]
+            })
+
+        arr.sort(key=lambda x: x['quantity'], reverse=True)
+
+        for word in arr:
+            print(
+                f"A palavra {word['word']} apareceu {word['quantity']} vezes.")
     except:
-        print("something went wrong")
+        print("Something went wrong")
     finally:
         data.close()
 
