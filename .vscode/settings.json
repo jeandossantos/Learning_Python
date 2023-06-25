@@ -3,5 +3,5 @@
     "editor.defaultFormatter": "ms-python.autopep8"
   },
   "python.formatting.provider": "none",
-  "cSpell.words": ["operacoes"]
+  "cSpell.words": ["demofile", "demonfile", "operacoes"]
 }
